@@ -3,17 +3,80 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ClaimOrchestrator</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>@(ViewBag.Title ?? "Claim Orchestrator - Streamlined Claims Management System")</title>
+    <meta name="title" content="@(ViewBag.Title ?? "Claim Orchestrator - Streamlined Claims Management System")" />
+    <meta name="description" content="@(ViewBag.Description ?? "Efficiently manage, validate, and process insurance claims with our comprehensive orchestration platform. Features automated validation, deduplication, and eligibility checks.")" />
+    <meta name="keywords" content="@(ViewBag.Keywords ?? "claim orchestrator, insurance claims, claims management, claim processing, validation, deduplication, eligibility")" />
+    <meta name="author" content="Claim Orchestrator" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="@(Context.Request.Scheme + "://" + Context.Request.Host + Context.Request.Path)" />
+    <meta property="og:title" content="@(ViewBag.Title ?? "Claim Orchestrator - Streamlined Claims Management System")" />
+    <meta property="og:description" content="@(ViewBag.Description ?? "Efficiently manage, validate, and process insurance claims with our comprehensive orchestration platform.")" />
+    <meta property="og:image" content="@(Context.Request.Scheme + "://" + Context.Request.Host + "/images/og-image.jpg")" />
+    <meta property="og:site_name" content="Claim Orchestrator" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="@(Context.Request.Scheme + "://" + Context.Request.Host + Context.Request.Path)" />
+    <meta property="twitter:title" content="@(ViewBag.Title ?? "Claim Orchestrator - Streamlined Claims Management System")" />
+    <meta property="twitter:description" content="@(ViewBag.Description ?? "Efficiently manage, validate, and process insurance claims with our comprehensive orchestration platform.")" />
+    <meta property="twitter:image" content="@(Context.Request.Scheme + "://" + Context.Request.Host + "/images/twitter-image.jpg")" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="~/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="~/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="~/favicon-16x16.png" />
+    <link rel="manifest" href="~/site.webmanifest" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="@(Context.Request.Scheme + "://" + Context.Request.Host + Context.Request.Path)" />
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ClaimOrchestrator.styles.css" asp-append-version="true" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "WebApplication",
+        "name": "Claim Orchestrator",
+        "description": "@(ViewBag.Description ?? "Efficiently manage, validate, and process insurance claims with our comprehensive orchestration platform.")",
+        "url": "@(Context.Request.Scheme + "://" + Context.Request.Host)",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@@type": "Organization",
+            "name": "Claim Orchestrator"
+        }
+    }
+    </script>
+    
+    @await RenderSectionAsync("Head", required: false)
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ClaimOrchestrator</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-clipboard-check me-2"></i>Claim Orchestrator
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -40,6 +103,7 @@
             </div>
         </nav>
     </header>
+    
     <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -48,12 +112,22 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - ClaimOrchestrator - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row">
+                <div class="col-md-6">
+                    &copy; @DateTime.Now.Year - Claim Orchestrator - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+                </div>
+                <div class="col-md-6 text-end">
+                    <small>Version 1.0.0</small>
+                </div>
+            </div>
         </div>
     </footer>
+    
+    <!-- Scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

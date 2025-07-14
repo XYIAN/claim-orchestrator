@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClaimOrchestrator</name>
+    </assembly>
+    <members>
+        <member name="T:ClaimOrchestrator.Controllers.ClaimsController">
+            <summary>
+            Controller for managing claims in the claim orchestration system.
+            </summary>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.ClaimsController.#ctor(ClaimOrchestrator.Data.ClaimContext,ClaimOrchestrator.Services.IClaimProcessingService,Microsoft.Extensions.Logging.ILogger{ClaimOrchestrator.Controllers.ClaimsController})">
+            <summary>
+            Initializes a new instance of the ClaimsController.
+            </summary>
+            <param name="context">The database context for claims.</param>
+            <param name="processingService">The claim processing service.</param>
+            <param name="logger">The logger instance.</param>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.ClaimsController.Index">
+            <summary>
+            Displays a list of all claims ordered by creation date.
+            </summary>
+            <returns>The claims index view.</returns>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.ClaimsController.Details(System.Nullable{System.Int32})">
+            <summary>
+            Displays detailed information about a specific claim including processing logs.
+            </summary>
+            <param name="id">The unique identifier of the claim.</param>
+            <returns>The claim details view or NotFound if claim doesn't exist.</returns>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.ClaimsController.Upload">
+            <summary>
+            Displays the claim upload form.
+            </summary>
+            <returns>The upload view.</returns>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.ClaimsController.Upload(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Handles claim upload via CSV file or creates sample claims for demonstration.
+            </summary>
+            <param name="file">The uploaded CSV file (optional for demo purposes).</param>
+            <returns>Redirect to claims index with success/error message.</returns>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.ClaimsController.Process(System.Int32)">
+            <summary>
+            Processes a claim through all validation and eligibility checks.
+            </summary>
+            <param name="id">The unique identifier of the claim to process.</param>
+            <returns>Redirect to claim details with processing result.</returns>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.ClaimsController.Validate(System.Int32)">
+            <summary>
+            Validates a specific claim.
+            </summary>
+            <param name="id">The unique identifier of the claim to validate.</param>
+            <returns>Redirect to claim details with validation result.</returns>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.ClaimsController.CheckDuplication(System.Int32)">
+            <summary>
+            Checks for duplicate claims.
+            </summary>
+            <param name="id">The unique identifier of the claim to check for duplicates.</param>
+            <returns>Redirect to claim details with duplication check result.</returns>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.ClaimsController.CheckEligibility(System.Int32)">
+            <summary>
+            Checks claim eligibility.
+            </summary>
+            <param name="id">The unique identifier of the claim to check eligibility.</param>
+            <returns>Redirect to claim details with eligibility check result.</returns>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.ClaimsController.CreateSampleClaimsAsync">
+            <summary>
+            Creates sample claims for demonstration purposes.
+            </summary>
+            <returns>Task representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:ClaimOrchestrator.Controllers.HomeController">
+            <summary>
+            Controller for handling home page and general application views.
+            </summary>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.HomeController.#ctor(Microsoft.Extensions.Logging.ILogger{ClaimOrchestrator.Controllers.HomeController})">
+            <summary>
+            Initializes a new instance of the HomeController.
+            </summary>
+            <param name="logger">The logger instance.</param>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.HomeController.Index">
+            <summary>
+            Displays the home page with application overview.
+            </summary>
+            <returns>The home page view.</returns>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.HomeController.Privacy">
+            <summary>
+            Displays the privacy policy page.
+            </summary>
+            <returns>The privacy policy view.</returns>
+        </member>
+        <member name="M:ClaimOrchestrator.Controllers.HomeController.Error">
+            <summary>
+            Displays error information for debugging purposes.
+            </summary>
+            <returns>The error view with request details.</returns>
+        </member>
+        <member name="T:ClaimOrchestrator.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:ClaimOrchestrator.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ClaimOrchestrator.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ClaimOrchestrator.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ClaimOrchestrator.Models.Claim">
+            <summary>
+            Represents a claim in the claim orchestration system.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.Claim.Id">
+            <summary>
+            Gets or sets the unique identifier for the claim.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.Claim.ClaimNumber">
+            <summary>
+            Gets or sets the claim number. Must be unique and between 1-50 characters.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.Claim.ClaimantName">
+            <summary>
+            Gets or sets the name of the claimant. Must be between 1-100 characters.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.Claim.Address">
+            <summary>
+            Gets or sets the address of the claimant. Must be between 1-200 characters.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.Claim.Amount">
+            <summary>
+            Gets or sets the claim amount. Must be greater than or equal to 0.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.Claim.Status">
+            <summary>
+            Gets or sets the current status of the claim. Must be between 1-50 characters.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.Claim.CreatedAt">
+            <summary>
+            Gets or sets the date and time when the claim was created.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.Claim.UpdatedAt">
+            <summary>
+            Gets or sets the date and time when the claim was last updated.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.Claim.ProcessingLogs">
+            <summary>
+            Gets or sets the collection of processing logs associated with this claim.
+            </summary>
+        </member>
+        <member name="T:ClaimOrchestrator.Models.ProcessingLog">
+            <summary>
+            Represents a processing log entry for claim processing steps.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.ProcessingLog.Id">
+            <summary>
+            Gets or sets the unique identifier for the processing log.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.ProcessingLog.ClaimId">
+            <summary>
+            Gets or sets the foreign key to the associated claim.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.ProcessingLog.StepName">
+            <summary>
+            Gets or sets the name of the processing step. Must be between 1-100 characters.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.ProcessingLog.Status">
+            <summary>
+            Gets or sets the status of the processing step. Must be between 1-50 characters.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.ProcessingLog.Message">
+            <summary>
+            Gets or sets the optional message or details about the processing step. Maximum 500 characters.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.ProcessingLog.Timestamp">
+            <summary>
+            Gets or sets the date and time when the processing log was created.
+            </summary>
+        </member>
+        <member name="P:ClaimOrchestrator.Models.ProcessingLog.Claim">
+            <summary>
+            Gets or sets the navigation property to the associated claim.
+            </summary>
+        </member>
+    </members>
+</doc>

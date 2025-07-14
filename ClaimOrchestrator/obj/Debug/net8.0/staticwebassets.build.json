@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FFch/g5IJhGbzVmQMVHPNAVgXFsgemB9o85NF7PM3rY=",
+  "Hash": "fePm8kqFPMy2niFG7xNJ66vcPKJMymKz7Unc/NPKp+U=",
   "Source": "ClaimOrchestrator",
   "BasePath": "_content/ClaimOrchestrator",
   "Mode": "Default",
@@ -1193,6 +1193,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/Users/kyle/code/claim-orchestrator/ClaimOrchestrator/wwwroot/robots.txt",
+      "SourceId": "ClaimOrchestrator",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/kyle/code/claim-orchestrator/ClaimOrchestrator/wwwroot/",
+      "BasePath": "_content/ClaimOrchestrator",
+      "RelativePath": "robots.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/robots.txt"
+    },
+    {
+      "Identity": "/Users/kyle/code/claim-orchestrator/ClaimOrchestrator/wwwroot/site.webmanifest",
+      "SourceId": "ClaimOrchestrator",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/kyle/code/claim-orchestrator/ClaimOrchestrator/wwwroot/",
+      "BasePath": "_content/ClaimOrchestrator",
+      "RelativePath": "site.webmanifest",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/site.webmanifest"
     }
   ]
 }

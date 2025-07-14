@@ -1,0 +1,322 @@
+@{
+    ViewData["Title"] = "Upload Claims";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <!-- Header Section -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-2">
+                            <li class="breadcrumb-item">
+                                <a asp-action="Index" class="text-decoration-none">
+                                    <i class="fas fa-clipboard-list me-1"></i>Claims
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Upload</li>
+                        </ol>
+                    </nav>
+                    <h1 class="h2 mb-1 text-gradient">
+                        <i class="fas fa-upload me-2"></i>Upload Claims
+                    </h1>
+                    <p class="text-muted mb-0">Upload CSV file or create sample claims for demonstration</p>
+                </div>
+                <div>
+                    <a asp-action="Index" class="btn btn-outline-secondary glass-effect">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Claims
+                    </a>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- CSV Upload Section -->
+                <div class="col-lg-6">
+                    <div class="card shadow-sm glass-effect mb-4">
+                        <div class="card-header bg-transparent border-bottom">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-file-csv me-2"></i>Upload CSV File
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <form asp-action="Upload" method="post" enctype="multipart/form-data" id="uploadForm">
+                                @Html.AntiForgeryToken()
+                                
+                                <div class="upload-area mb-4" id="uploadArea">
+                                    <div class="upload-content text-center p-5">
+                                        <i class="fas fa-cloud-upload-alt fa-3x text-primary mb-3"></i>
+                                        <h5 class="mb-2">Drag & Drop CSV File</h5>
+                                        <p class="text-muted mb-3">or click to browse files</p>
+                                        <input type="file" class="form-control d-none" id="file" name="file" accept=".csv" required>
+                                        <button type="button" class="btn btn-outline-primary" onclick="document.getElementById('file').click()">
+                                            <i class="fas fa-folder-open me-2"></i>Choose File
+                                        </button>
+                                    </div>
+                                    <div class="file-info d-none" id="fileInfo">
+                                        <div class="d-flex align-items-center p-3 bg-light rounded">
+                                            <i class="fas fa-file-csv text-primary me-3"></i>
+                                            <div class="flex-grow-1">
+                                                <h6 class="mb-1" id="fileName">filename.csv</h6>
+                                                <small class="text-muted" id="fileSize">0 KB</small>
+                                            </div>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFile()">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label fw-medium">CSV Requirements:</label>
+                                    <ul class="list-unstyled text-muted small">
+                                        <li><i class="fas fa-check text-success me-2"></i>Headers: ClaimNumber, ClaimantName, Address, Amount</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Maximum file size: 10MB</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Supported format: CSV only</li>
+                                    </ul>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary btn-lg w-100 glass-effect" id="uploadBtn" disabled>
+                                    <i class="fas fa-upload me-2"></i>Upload File
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Demo Section -->
+                <div class="col-lg-6">
+                    <div class="card shadow-sm glass-effect mb-4">
+                        <div class="card-header bg-transparent border-bottom">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-magic me-2"></i>Quick Demo
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-rocket fa-3x text-success mb-3"></i>
+                                <h5 class="mb-2">Get Started Quickly</h5>
+                                <p class="text-muted">Create sample claims to demonstrate the orchestration system functionality.</p>
+                            </div>
+                            
+                            <form asp-action="Upload" method="post" id="demoForm">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-success btn-lg w-100 glass-effect mb-3">
+                                    <i class="fas fa-magic me-2"></i>Create Sample Claims
+                                </button>
+                            </form>
+                            
+                            <div class="alert alert-info glass-effect">
+                                <h6 class="alert-heading mb-3">
+                                    <i class="fas fa-info-circle me-2"></i>Sample Data Includes:
+                                </h6>
+                                <ul class="mb-0">
+                                    <li><i class="fas fa-check text-success me-2"></i>5 sample claims with different amounts</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Various statuses for demonstration</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Realistic claim data for testing</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Ready for processing and validation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Upload Statistics -->
+                    <div class="card shadow-sm glass-effect">
+                        <div class="card-header bg-transparent border-bottom">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-chart-bar me-2"></i>Upload Statistics
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <div class="col-6">
+                                    <div class="stat-item">
+                                        <h3 class="h4 text-primary mb-1">5</h3>
+                                        <p class="text-muted small mb-0">Sample Claims</p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="stat-item">
+                                        <h3 class="h4 text-success mb-1">100%</h3>
+                                        <p class="text-muted small mb-0">Success Rate</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CSV Format Example -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card shadow-sm glass-effect">
+                        <div class="card-header bg-transparent border-bottom">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-table me-2"></i>CSV Format Example
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-sm table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th class="text-center">
+                                                <i class="fas fa-hashtag me-1"></i>ClaimNumber
+                                            </th>
+                                            <th class="text-center">
+                                                <i class="fas fa-user me-1"></i>ClaimantName
+                                            </th>
+                                            <th class="text-center">
+                                                <i class="fas fa-map-marker-alt me-1"></i>Address
+                                            </th>
+                                            <th class="text-center">
+                                                <i class="fas fa-dollar-sign me-1"></i>Amount
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>CLM-001</code></td>
+                                            <td>John Smith</td>
+                                            <td>123 Main St, Anytown, CA 90210</td>
+                                            <td><code>2500.00</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>CLM-002</code></td>
+                                            <td>Jane Doe</td>
+                                            <td>456 Oak Ave, Somewhere, NY 10001</td>
+                                            <td><code>1500.00</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>CLM-003</code></td>
+                                            <td>Bob Johnson</td>
+                                            <td>789 Pine Rd, Elsewhere, TX 75001</td>
+                                            <td><code>5000.00</code></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mt-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-lightbulb me-1"></i>
+                                    <strong>Tip:</strong> Make sure your CSV file follows this exact format with headers in the first row.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .upload-area {
+        border: 2px dashed #dee2e6;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .upload-area:hover {
+        border-color: #0d6efd;
+        background-color: rgba(13, 110, 253, 0.05);
+    }
+    
+    .upload-area.dragover {
+        border-color: #0d6efd;
+        background-color: rgba(13, 110, 253, 0.1);
+    }
+    
+    .file-info {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('file');
+        const fileInfo = document.getElementById('fileInfo');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const fileName = document.getElementById('fileName');
+        const fileSize = document.getElementById('fileSize');
+        
+        // Drag and drop functionality
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                handleFileSelect(files[0]);
+            }
+        });
+        
+        // File input change
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFileSelect(e.target.files[0]);
+            }
+        });
+        
+        // Handle file selection
+        function handleFileSelect(file) {
+            if (file.type !== 'text/csv' && !file.name.endsWith('.csv')) {
+                alert('Please select a valid CSV file.');
+                return;
+            }
+            
+            if (file.size > 10 * 1024 * 1024) { // 10MB limit
+                alert('File size must be less than 10MB.');
+                return;
+            }
+            
+            fileName.textContent = file.name;
+            fileSize.textContent = formatFileSize(file.size);
+            fileInfo.classList.remove('d-none');
+            uploadBtn.disabled = false;
+        }
+        
+        // Remove file
+        function removeFile() {
+            fileInput.value = '';
+            fileInfo.classList.add('d-none');
+            uploadBtn.disabled = true;
+        }
+        
+        // Format file size
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // Form submission with loading state
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            const btn = document.getElementById('uploadBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Uploading...';
+        });
+        
+        document.getElementById('demoForm').addEventListener('submit', function(e) {
+            const btn = this.querySelector('button');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Creating...';
+        });
+    </script>
+} 

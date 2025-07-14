@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://claimorchestrator.com/sitemap.xml
+
+# Disallow admin and API endpoints
+Disallow: /api-docs/
+Disallow: /health
+Disallow: /error
+
+# Allow important pages
+Allow: /claims
+Allow: /claims/upload
+Allow: /privacy
+
+# Crawl delay (optional)
+Crawl-delay: 1 

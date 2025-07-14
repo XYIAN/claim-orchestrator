@@ -1,6 +1,135 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="glass-effect p-4">
+                <h1 class="display-4 mb-4 text-gradient">
+                    <i class="fas fa-shield-alt me-3"></i>Privacy Policy
+                </h1>
+                
+                <p class="lead mb-4">
+                    At Claim Orchestrator, we are committed to protecting your privacy and ensuring the security of your data. 
+                    This privacy policy explains how we collect, use, and safeguard your information.
+                </p>
+                
+                <div class="privacy-section mb-4">
+                    <h2 class="h4 mb-3 text-primary">
+                        <i class="fas fa-info-circle me-2"></i>Information We Collect
+                    </h2>
+                    <p>
+                        We collect information that you provide directly to us, such as when you upload claims data, 
+                        create an account, or contact us for support. This may include:
+                    </p>
+                    <ul>
+                        <li>Claim information (claim numbers, claimant names, addresses, amounts)</li>
+                        <li>Processing logs and system activity</li>
+                        <li>Contact information for support purposes</li>
+                        <li>Usage data and analytics</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section mb-4">
+                    <h2 class="h4 mb-3 text-primary">
+                        <i class="fas fa-cog me-2"></i>How We Use Your Information
+                    </h2>
+                    <p>We use the information we collect to:</p>
+                    <ul>
+                        <li>Process and validate claims</li>
+                        <li>Provide customer support and technical assistance</li>
+                        <li>Improve our services and user experience</li>
+                        <li>Ensure system security and prevent fraud</li>
+                        <li>Comply with legal obligations</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section mb-4">
+                    <h2 class="h4 mb-3 text-primary">
+                        <i class="fas fa-lock me-2"></i>Data Security
+                    </h2>
+                    <p>
+                        We implement industry-standard security measures to protect your data, including:
+                    </p>
+                    <ul>
+                        <li>Encryption of data in transit and at rest</li>
+                        <li>Regular security audits and updates</li>
+                        <li>Access controls and authentication</li>
+                        <li>Secure data centers and infrastructure</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section mb-4">
+                    <h2 class="h4 mb-3 text-primary">
+                        <i class="fas fa-share me-2"></i>Data Sharing
+                    </h2>
+                    <p>
+                        We do not sell, trade, or otherwise transfer your personal information to third parties 
+                        except as described in this policy or with your explicit consent. We may share data with:
+                    </p>
+                    <ul>
+                        <li>Service providers who assist in our operations</li>
+                        <li>Legal authorities when required by law</li>
+                        <li>Business partners with your consent</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section mb-4">
+                    <h2 class="h4 mb-3 text-primary">
+                        <i class="fas fa-cookie-bite me-2"></i>Cookies and Tracking
+                    </h2>
+                    <p>
+                        We use cookies and similar technologies to enhance your experience, analyze usage patterns, 
+                        and provide personalized content. You can control cookie settings through your browser preferences.
+                    </p>
+                </div>
+                
+                <div class="privacy-section mb-4">
+                    <h2 class="h4 mb-3 text-primary">
+                        <i class="fas fa-user-edit me-2"></i>Your Rights
+                    </h2>
+                    <p>You have the right to:</p>
+                    <ul>
+                        <li>Access and review your personal information</li>
+                        <li>Request corrections to inaccurate data</li>
+                        <li>Request deletion of your data</li>
+                        <li>Opt-out of certain data processing activities</li>
+                        <li>File a complaint with relevant authorities</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section mb-4">
+                    <h2 class="h4 mb-3 text-primary">
+                        <i class="fas fa-calendar-alt me-2"></i>Policy Updates
+                    </h2>
+                    <p>
+                        We may update this privacy policy from time to time. We will notify you of any material changes 
+                        by posting the new policy on this page and updating the "Last Updated" date.
+                    </p>
+                </div>
+                
+                <div class="privacy-section mb-4">
+                    <h2 class="h4 mb-3 text-primary">
+                        <i class="fas fa-envelope me-2"></i>Contact Us
+                    </h2>
+                    <p>
+                        If you have any questions about this privacy policy or our data practices, 
+                        please contact us at:
+                    </p>
+                    <div class="contact-info p-3 bg-light rounded">
+                        <p class="mb-1"><strong>Email:</strong> privacy@claimorchestrator.com</p>
+                        <p class="mb-1"><strong>Phone:</strong> +1 (555) 123-4567</p>
+                        <p class="mb-0"><strong>Address:</strong> 123 Business Ave, Suite 100, Anytown, CA 90210</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5">
+                    <p class="text-muted">
+                        <strong>Last Updated:</strong> @DateTime.Now.ToString("MMMM dd, yyyy")
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
