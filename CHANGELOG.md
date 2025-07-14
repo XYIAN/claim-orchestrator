@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.2] - Custom Favicon Addition
+
+### Added
+
+- Custom favicon.ico for the application
+- Updated favicon configuration in layout and web manifest
+- Simplified favicon references for better browser compatibility
+
 ## [1.1.1] - Code Quality and Warning Fixes
 
 ### Fixed
