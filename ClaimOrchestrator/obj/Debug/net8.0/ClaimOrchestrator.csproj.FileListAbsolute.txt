@@ -156,3 +156,4 @@
 /Users/kyle/code/claim-orchestrator/ClaimOrchestrator/obj/Debug/net8.0/ClaimOrchestrator.pdb
 /Users/kyle/code/claim-orchestrator/ClaimOrchestrator/obj/Debug/net8.0/ClaimOrchestrator.genruntimeconfig.cache
 /Users/kyle/code/claim-orchestrator/ClaimOrchestrator/obj/Debug/net8.0/ref/ClaimOrchestrator.dll
+/Users/kyle/code/claim-orchestrator/ClaimOrchestrator/obj/Debug/net8.0/ClaimOrchestrator.sourcelink.json

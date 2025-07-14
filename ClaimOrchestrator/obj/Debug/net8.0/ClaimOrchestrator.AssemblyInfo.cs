@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClaimOrchestrator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5841ff95e164f9d6b102cdddf9bdcce132697afe")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClaimOrchestrator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClaimOrchestrator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

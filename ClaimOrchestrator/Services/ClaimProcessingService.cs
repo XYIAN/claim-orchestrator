@@ -17,11 +17,19 @@ namespace ClaimOrchestrator.Services
 	{
 		private readonly ClaimContext _context;
 		private readonly ILogger<ClaimProcessingService> _logger;
+		private readonly IValidationService _validationService;
+		private readonly IEligibilityService _eligibilityService;
 		
-		public ClaimProcessingService(ClaimContext context, ILogger<ClaimProcessingService> logger)
+		public ClaimProcessingService(
+			ClaimContext context, 
+			ILogger<ClaimProcessingService> logger,
+			IValidationService validationService,
+			IEligibilityService eligibilityService)
 		{
 			_context = context;
 			_logger = logger;
+			_validationService = validationService;
+			_eligibilityService = eligibilityService;
 		}
 		
 		public async Task<bool> ValidateClaimAsync(int claimId)
@@ -35,23 +43,23 @@ namespace ClaimOrchestrator.Services
 					return false;
 				}
 				
-				// Simulate validation logic
-				var isValid = !string.IsNullOrEmpty(claim.ClaimantName) && 
-							 !string.IsNullOrEmpty(claim.Address) && 
-							 claim.Amount > 0;
+				// Use the validation service
+				var validationResult = await _validationService.ValidateClaimAsync(claim);
 				
-				var status = isValid ? "Completed" : "Failed";
-				var message = isValid ? "Claim validation successful" : "Claim validation failed - missing required fields";
+				var status = validationResult.IsValid ? "Completed" : "Failed";
+				var message = validationResult.IsValid 
+					? validationResult.Message 
+					: $"Validation failed: {string.Join(", ", validationResult.Errors)}";
 				
 				await LogProcessingStepAsync(claimId, "Validation", status, message);
 				
-				if (isValid)
+				if (validationResult.IsValid)
 				{
 					claim.Status = "Validated";
 					await _context.SaveChangesAsync();
 				}
 				
-				return isValid;
+				return validationResult.IsValid;
 			}
 			catch (Exception ex)
 			{
@@ -110,20 +118,32 @@ namespace ClaimOrchestrator.Services
 					return false;
 				}
 				
-				// Simulate eligibility check
-				var isEligible = claim.Amount >= 100 && claim.Amount <= 10000;
-				var status = isEligible ? "Completed" : "Failed";
-				var message = isEligible ? "Claim is eligible" : "Claim amount outside eligible range";
+				// Use the eligibility service
+				var eligibilityResult = await _eligibilityService.CheckEligibilityAsync(claim);
+				
+				var status = eligibilityResult.IsEligible ? "Completed" : "Failed";
+				var message = eligibilityResult.IsEligible 
+					? eligibilityResult.Message 
+					: $"Eligibility check failed: {string.Join(", ", eligibilityResult.Reasons)}";
 				
 				await LogProcessingStepAsync(claimId, "Eligibility", status, message);
 				
-				if (isEligible)
+				if (eligibilityResult.IsEligible)
 				{
 					claim.Status = "Eligible";
+					
+					// Apply adjusted amount if provided
+					if (eligibilityResult.AdjustedAmount.HasValue)
+					{
+						claim.Amount = eligibilityResult.AdjustedAmount.Value;
+						await LogProcessingStepAsync(claimId, "Amount Adjustment", "Completed", 
+							$"Amount adjusted to ${eligibilityResult.AdjustedAmount.Value:N2}");
+					}
+					
 					await _context.SaveChangesAsync();
 				}
 				
-				return isEligible;
+				return eligibilityResult.IsEligible;
 			}
 			catch (Exception ex)
 			{

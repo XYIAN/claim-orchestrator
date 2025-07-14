@@ -11,6 +11,8 @@ builder.Services.AddDbContext<ClaimOrchestrator.Data.ClaimContext>(options =>
 
 // Add custom services
 builder.Services.AddScoped<ClaimOrchestrator.Services.IClaimProcessingService, ClaimOrchestrator.Services.ClaimProcessingService>();
+builder.Services.AddScoped<ClaimOrchestrator.Services.IValidationService, ClaimOrchestrator.Services.ValidationService>();
+builder.Services.AddScoped<ClaimOrchestrator.Services.IEligibilityService, ClaimOrchestrator.Services.EligibilityService>();
 
 var app = builder.Build();
 
