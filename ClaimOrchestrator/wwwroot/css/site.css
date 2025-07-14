@@ -1,0 +1,94 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #8B7355;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color: #FAF9F6;
+}
+
+/* Custom color scheme for professional admin system */
+.text-brown {
+  color: #8B7355 !important;
+}
+
+.bg-brown {
+  background-color: #8B7355 !important;
+}
+
+.btn-brown {
+  background-color: #8B7355;
+  border-color: #8B7355;
+  color: white;
+}
+
+.btn-brown:hover {
+  background-color: #6B5B47;
+  border-color: #6B5B47;
+  color: white;
+}
+
+.btn-outline-brown {
+  color: #8B7355;
+  border-color: #8B7355;
+}
+
+.btn-outline-brown:hover {
+  background-color: #8B7355;
+  border-color: #8B7355;
+  color: white;
+}
+
+/* Card styling */
+.card {
+  border: 1px solid #E8E4E0;
+  border-radius: 8px;
+}
+
+.card-header {
+  background-color: #F8F6F3 !important;
+  border-bottom: 1px solid #E8E4E0;
+}
+
+/* Table styling */
+.table-hover tbody tr:hover {
+  background-color: #F8F6F3;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: #8B7355 !important;
+  box-shadow: 0 2px 4px rgba(139, 115, 85, 0.1);
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: white !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #F8F6F3 !important;
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
