@@ -76,7 +76,7 @@ namespace ClaimOrchestrator.Services
 			return ValidationResult.Success("Claim number is valid");
 		}
 		
-		public async Task<ValidationResult> ValidateClaimantInfoAsync(string claimantName, string address)
+		public Task<ValidationResult> ValidateClaimantInfoAsync(string claimantName, string address)
 		{
 			var errors = new List<string>();
 			
@@ -100,25 +100,25 @@ namespace ClaimOrchestrator.Services
 			
 			if (errors.Any())
 			{
-				return ValidationResult.Failure("Claimant information validation failed", errors);
+				return Task.FromResult(ValidationResult.Failure("Claimant information validation failed", errors));
 			}
 			
-			return ValidationResult.Success("Claimant information is valid");
+			return Task.FromResult(ValidationResult.Success("Claimant information is valid"));
 		}
 		
-		public async Task<ValidationResult> ValidateAmountAsync(decimal amount)
+		public Task<ValidationResult> ValidateAmountAsync(decimal amount)
 		{
 			if (amount <= 0)
 			{
-				return ValidationResult.Failure("Invalid amount", new List<string> { "Amount must be greater than zero" });
+				return Task.FromResult(ValidationResult.Failure("Invalid amount", new List<string> { "Amount must be greater than zero" }));
 			}
 			
 			if (amount > 1000000) // $1M limit
 			{
-				return ValidationResult.Failure("Amount too high", new List<string> { "Amount cannot exceed $1,000,000" });
+				return Task.FromResult(ValidationResult.Failure("Amount too high", new List<string> { "Amount cannot exceed $1,000,000" }));
 			}
 			
-			return ValidationResult.Success("Amount is valid");
+			return Task.FromResult(ValidationResult.Success("Amount is valid"));
 		}
 	}
 } 

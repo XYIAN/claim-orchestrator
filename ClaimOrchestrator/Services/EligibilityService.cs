@@ -44,17 +44,17 @@ namespace ClaimOrchestrator.Services
 			return EligibilityResult.Eligible("Claim is eligible");
 		}
 		
-		public async Task<EligibilityResult> CheckAmountEligibilityAsync(decimal amount)
+		public Task<EligibilityResult> CheckAmountEligibilityAsync(decimal amount)
 		{
 			// Basic amount range check
 			if (amount < 100)
 			{
-				return EligibilityResult.NotEligible("Amount too low", new List<string> { "Minimum claim amount is $100" });
+				return Task.FromResult(EligibilityResult.NotEligible("Amount too low", new List<string> { "Minimum claim amount is $100" }));
 			}
 			
 			if (amount > 10000)
 			{
-				return EligibilityResult.NotEligible("Amount too high", new List<string> { "Maximum claim amount is $10,000" });
+				return Task.FromResult(EligibilityResult.NotEligible("Amount too high", new List<string> { "Maximum claim amount is $10,000" }));
 			}
 			
 			// Tier-based adjustments (example business logic)
@@ -65,14 +65,14 @@ namespace ClaimOrchestrator.Services
 				adjustedAmount = amount * 0.95m;
 			}
 			
-			return EligibilityResult.Eligible("Amount is eligible", adjustedAmount);
+			return Task.FromResult(EligibilityResult.Eligible("Amount is eligible", adjustedAmount));
 		}
 		
-		public async Task<EligibilityResult> CheckGeographicEligibilityAsync(string address)
+		public Task<EligibilityResult> CheckGeographicEligibilityAsync(string address)
 		{
 			if (string.IsNullOrWhiteSpace(address))
 			{
-				return EligibilityResult.NotEligible("Invalid address", new List<string> { "Address is required" });
+				return Task.FromResult(EligibilityResult.NotEligible("Invalid address", new List<string> { "Address is required" }));
 			}
 			
 			// Check for US addresses (basic check)
@@ -81,28 +81,28 @@ namespace ClaimOrchestrator.Services
 			var hasValidState = usStates.Any(state => address.ToUpper().Contains(state));
 			if (!hasValidState)
 			{
-				return EligibilityResult.NotEligible("Geographic restriction", new List<string> { "Only US addresses are eligible" });
+				return Task.FromResult(EligibilityResult.NotEligible("Geographic restriction", new List<string> { "Only US addresses are eligible" }));
 			}
 			
-			return EligibilityResult.Eligible("Geographic location is eligible");
+			return Task.FromResult(EligibilityResult.Eligible("Geographic location is eligible"));
 		}
 		
-		public async Task<EligibilityResult> CheckTimeEligibilityAsync(DateTime createdAt)
+		public Task<EligibilityResult> CheckTimeEligibilityAsync(DateTime createdAt)
 		{
 			// Check if claim was created within the last 2 years
 			var twoYearsAgo = DateTime.UtcNow.AddYears(-2);
 			if (createdAt < twoYearsAgo)
 			{
-				return EligibilityResult.NotEligible("Time restriction", new List<string> { "Claims must be filed within 2 years" });
+				return Task.FromResult(EligibilityResult.NotEligible("Time restriction", new List<string> { "Claims must be filed within 2 years" }));
 			}
 			
 			// Check if claim was created in the future (data validation)
 			if (createdAt > DateTime.UtcNow.AddDays(1))
 			{
-				return EligibilityResult.NotEligible("Invalid date", new List<string> { "Claim date cannot be in the future" });
+				return Task.FromResult(EligibilityResult.NotEligible("Invalid date", new List<string> { "Claim date cannot be in the future" }));
 			}
 			
-			return EligibilityResult.Eligible("Time requirements are met");
+			return Task.FromResult(EligibilityResult.Eligible("Time requirements are met"));
 		}
 	}
 } 

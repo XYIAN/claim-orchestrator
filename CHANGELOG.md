@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.1] - Code Quality and Warning Fixes
+
+### Fixed
+
+- Resolved all async method warnings by properly implementing Task-based returns
+- Fixed CS1998 warnings in ValidationService and EligibilityService
+- Improved code quality and maintainability
+- Ensured clean build with zero warnings
+
 ## [1.1.0] - Enhanced UI and SEO Optimization
 
 ### Added
