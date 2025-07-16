@@ -9,30 +9,12 @@ namespace ClaimOrchestrator.Data
 		{
 		}
 		
-		public DbSet<Claim> Claims { get; set; }
-		public DbSet<ProcessingLog> ProcessingLogs { get; set; }
-		
+		public DbSet<Test> Tests { get; set; } // Only Test entity remains
+
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
-			
-			// Configure relationships
-			modelBuilder.Entity<ProcessingLog>()
-				.HasOne(p => p.Claim)
-				.WithMany(c => c.ProcessingLogs)
-				.HasForeignKey(p => p.ClaimId)
-				.OnDelete(DeleteBehavior.Cascade);
-			
-			// Configure indexes
-			modelBuilder.Entity<Claim>()
-				.HasIndex(c => c.ClaimNumber)
-				.IsUnique();
-				
-			modelBuilder.Entity<ProcessingLog>()
-				.HasIndex(p => p.ClaimId);
-				
-			modelBuilder.Entity<ProcessingLog>()
-				.HasIndex(p => p.Timestamp);
+			// No Claim or ProcessingLog configuration
 		}
 	}
-} 
+}

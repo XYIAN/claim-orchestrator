@@ -12,12 +12,11 @@ builder.Services.AddControllersWithViews()
         options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
     });
 
-// Add Entity Framework Core with SQLite
+// Add Entity Framework Core with SQL Server
 builder.Services.AddDbContext<ClaimOrchestrator.Data.ClaimContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=claims.db"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add custom services
-builder.Services.AddScoped<ClaimOrchestrator.Services.IClaimProcessingService, ClaimOrchestrator.Services.ClaimProcessingService>();
+// Remove claim-related services
 builder.Services.AddScoped<ClaimOrchestrator.Services.IValidationService, ClaimOrchestrator.Services.ValidationService>();
 builder.Services.AddScoped<ClaimOrchestrator.Services.IEligibilityService, ClaimOrchestrator.Services.EligibilityService>();
 

@@ -4,10 +4,7 @@ namespace ClaimOrchestrator.Services
 {
 	public interface IValidationService
 	{
-		Task<ValidationResult> ValidateClaimAsync(Claim claim);
-		Task<ValidationResult> ValidateClaimNumberAsync(string claimNumber, int? excludeClaimId = null);
-		Task<ValidationResult> ValidateClaimantInfoAsync(string claimantName, string address);
-		Task<ValidationResult> ValidateAmountAsync(decimal amount);
+		// All claim-related validation interface logic removed. This interface is now a stub for Test users only.
 	}
 	
 	public class ValidationResult
@@ -35,4 +32,4 @@ namespace ClaimOrchestrator.Services
 			};
 		}
 	}
-} 
+}

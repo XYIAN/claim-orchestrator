@@ -1,7 +1,5 @@
-@model ClaimOrchestrator.Models.Claim
-
 @{
-    ViewData["Title"] = $"Claim {Model.ClaimNumber} - {Model.ClaimantName}";
+    ViewData["Title"] = "Details";
 }
 
 <div class="container-fluid">
@@ -14,20 +12,19 @@
                         <ol class="breadcrumb mb-2">
                             <li class="breadcrumb-item">
                                 <a asp-action="Index" class="text-decoration-none">
-                                    <i class="fas fa-clipboard-list me-1"></i>Claims
+                                    <i class="fas fa-clipboard-list me-1"></i>Home
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">@Model.ClaimNumber</li>
+                            <li class="breadcrumb-item active" aria-current="page">Details</li>
                         </ol>
                     </nav>
                     <h1 class="h2 mb-1 text-gradient">
-                        <i class="fas fa-file-alt me-2"></i>Claim Details
+                        <i class="fas fa-file-alt me-2"></i>Details
                     </h1>
-                    <p class="text-muted mb-0">@Model.ClaimNumber - @Model.ClaimantName</p>
                 </div>
                 <div class="d-flex gap-2">
                     <a asp-action="Index" class="btn btn-outline-secondary glass-effect">
-                        <i class="fas fa-arrow-left me-2"></i>Back to Claims
+                        <i class="fas fa-arrow-left me-2"></i>Back
                     </a>
                     <button class="btn btn-outline-primary glass-effect" onclick="window.print()">
                         <i class="fas fa-print me-2"></i>Print
@@ -53,65 +50,53 @@
             }
             
             <div class="row">
-                <!-- Claim Information -->
+                <!-- Information -->
                 <div class="col-lg-6">
                     <div class="card shadow-sm glass-effect mb-4">
                         <div class="card-header bg-transparent border-bottom">
                             <h5 class="card-title mb-0">
-                                <i class="fas fa-info-circle me-2"></i>Claim Information
+                                <i class="fas fa-info-circle me-2"></i>Information
                             </h5>
                         </div>
                         <div class="card-body">
                             <div class="row mb-3">
                                 <div class="col-sm-4">
-                                    <label class="form-label fw-medium text-muted">Claim Number</label>
+                                    <label class="form-label fw-medium text-muted">Detail 1</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <span class="fw-bold text-primary">@Model.ClaimNumber</span>
+                                    <span class="fw-bold text-primary">[Detail1]</span>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-4">
-                                    <label class="form-label fw-medium text-muted">Claimant Name</label>
+                                    <label class="form-label fw-medium text-muted">Detail 2</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <span class="fw-medium">@Model.ClaimantName</span>
+                                    <span class="fw-medium">[Detail2]</span>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-4">
-                                    <label class="form-label fw-medium text-muted">Address</label>
+                                    <label class="form-label fw-medium text-muted">Detail 3</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <span>@Model.Address</span>
+                                    <span>[Detail3]</span>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-4">
-                                    <label class="form-label fw-medium text-muted">Amount</label>
+                                    <label class="form-label fw-medium text-muted">Detail 4</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <span class="badge bg-success fs-6">$@Model.Amount.ToString("N2")</span>
+                                    <span class="badge bg-success fs-6">$[Detail4]</span>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-4">
-                                    <label class="form-label fw-medium text-muted">Status</label>
+                                    <label class="form-label fw-medium text-muted">Detail 5</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    @{
-                                        var statusClass = Model.Status switch
-                                        {
-                                            "Pending" => "bg-warning",
-                                            "Validated" => "bg-info",
-                                            "Deduplicated" => "bg-primary",
-                                            "Eligible" => "bg-success",
-                                            "Processed" => "bg-success",
-                                            "Failed" => "bg-danger",
-                                            _ => "bg-secondary"
-                                        };
-                                    }
-                                    <span class="badge @statusClass fs-6">@Model.Status</span>
+                                    <span class="badge bg-secondary fs-6">[Detail5]</span>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -121,7 +106,7 @@
                                 <div class="col-sm-8">
                                     <span>
                                         <i class="fas fa-calendar-day me-1"></i>
-                                        @Model.CreatedAt.ToString("MMM dd, yyyy 'at' h:mm tt")
+                                        [CreatedAt]
                                     </span>
                                 </div>
                             </div>
@@ -134,127 +119,32 @@
                                     <div class="col-sm-8">
                                         <span>
                                             <i class="fas fa-edit me-1"></i>
-                                            @Model.UpdatedAt.Value.ToString("MMM dd, yyyy 'at' h:mm tt")
+                                            [UpdatedAt]
                                         </span>
                                     </div>
                                 </div>
                             }
                         </div>
                     </div>
-                    
-                    <!-- Processing Actions -->
-                    <div class="card shadow-sm glass-effect">
-                        <div class="card-header bg-transparent border-bottom">
-                            <h5 class="card-title mb-0">
-                                <i class="fas fa-cogs me-2"></i>Processing Actions
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-grid gap-3">
-                                @if (Model.Status == "Pending")
-                                {
-                                    <form asp-action="Process" asp-route-id="@Model.Id" method="post">
-                                        @Html.AntiForgeryToken()
-                                        <button type="submit" class="btn btn-success btn-lg glass-effect" 
-                                                onclick="return confirm('Process all steps for this claim?')">
-                                            <i class="fas fa-play me-2"></i>Process All Steps
-                                        </button>
-                                    </form>
-                                }
-                                
-                                <div class="row g-2">
-                                    <div class="col-6">
-                                        <form asp-action="Validate" asp-route-id="@Model.Id" method="post">
-                                            @Html.AntiForgeryToken()
-                                            <button type="submit" class="btn btn-outline-info w-100 glass-effect" 
-                                                    onclick="return confirm('Validate this claim?')">
-                                                <i class="fas fa-check me-2"></i>Validate
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <div class="col-6">
-                                        <form asp-action="CheckDuplication" asp-route-id="@Model.Id" method="post">
-                                            @Html.AntiForgeryToken()
-                                            <button type="submit" class="btn btn-outline-primary w-100 glass-effect" 
-                                                    onclick="return confirm('Check for duplicates?')">
-                                                <i class="fas fa-search me-2"></i>Check Duplicates
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                                
-                                <form asp-action="CheckEligibility" asp-route-id="@Model.Id" method="post">
-                                    @Html.AntiForgeryToken()
-                                    <button type="submit" class="btn btn-outline-success glass-effect" 
-                                            onclick="return confirm('Check eligibility?')">
-                                        <i class="fas fa-thumbs-up me-2"></i>Check Eligibility
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 
-                <!-- Processing Logs -->
+                <!-- Logs -->
                 <div class="col-lg-6">
                     <div class="card shadow-sm glass-effect">
                         <div class="card-header bg-transparent border-bottom">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h5 class="card-title mb-0">
-                                    <i class="fas fa-list-alt me-2"></i>Processing Logs
+                                    <i class="fas fa-list-alt me-2"></i>Logs
                                 </h5>
-                                <span class="badge bg-secondary">@Model.ProcessingLogs.Count() entries</span>
+                                <span class="badge bg-secondary">0 entries</span>
                             </div>
                         </div>
                         <div class="card-body p-0">
-                            @if (Model.ProcessingLogs.Any())
-                            {
-                                <div class="timeline-container" style="max-height: 600px; overflow-y: auto;">
-                                    <div class="timeline">
-                                        @foreach (var log in Model.ProcessingLogs.OrderByDescending(l => l.Timestamp))
-                                        {
-                                            <div class="timeline-item">
-                                                <div class="timeline-marker">
-                                                    @{
-                                                        var iconClass = log.Status switch
-                                                        {
-                                                            "Completed" => "fas fa-check-circle text-success",
-                                                            "Failed" => "fas fa-times-circle text-danger",
-                                                            "Error" => "fas fa-exclamation-triangle text-warning",
-                                                            _ => "fas fa-clock text-muted"
-                                                        };
-                                                    }
-                                                    <i class="@iconClass"></i>
-                                                </div>
-                                                <div class="timeline-content">
-                                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                                        <h6 class="mb-1 fw-medium">@log.StepName</h6>
-                                                        <span class="badge @(log.Status == "Completed" ? "bg-success" : log.Status == "Failed" ? "bg-danger" : "bg-warning")">
-                                                            @log.Status
-                                                        </span>
-                                                    </div>
-                                                    @if (!string.IsNullOrEmpty(log.Message))
-                                                    {
-                                                        <p class="text-muted mb-2 small">@log.Message</p>
-                                                    }
-                                                    <small class="text-muted">
-                                                        <i class="fas fa-clock me-1"></i>
-                                                        @log.Timestamp.ToString("MMM dd, yyyy 'at' h:mm:ss tt")
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        }
-                                    </div>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="text-center py-5">
-                                    <i class="fas fa-clipboard-list fa-3x text-muted mb-3"></i>
-                                    <h5 class="text-muted mb-2">No processing logs yet</h5>
-                                    <p class="text-muted mb-0">Processing logs will appear here once actions are performed.</p>
-                                </div>
-                            }
+                            <div class="text-center py-5">
+                                <i class="fas fa-clipboard-list fa-3x text-muted mb-3"></i>
+                                <h5 class="text-muted mb-2">No logs yet</h5>
+                                <p class="text-muted mb-0">Logs will appear here once actions are performed.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -262,49 +152,6 @@
         </div>
     </div>
 </div>
-
-<style>
-    .timeline {
-        position: relative;
-        padding: 20px 0;
-    }
-    
-    .timeline-item {
-        display: flex;
-        margin-bottom: 20px;
-        position: relative;
-    }
-    
-    .timeline-marker {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: rgba(13, 110, 253, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 15px;
-        flex-shrink: 0;
-    }
-    
-    .timeline-content {
-        flex: 1;
-        background: rgba(255, 255, 255, 0.7);
-        padding: 15px;
-        border-radius: 8px;
-        border-left: 3px solid #0d6efd;
-    }
-    
-    .timeline-item:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        left: 20px;
-        top: 40px;
-        bottom: -20px;
-        width: 2px;
-        background: rgba(13, 110, 253, 0.2);
-    }
-</style>
 
 @section Scripts {
     <script>
@@ -316,13 +163,5 @@
                 bsAlert.close();
             });
         }, 5000);
-        
-        // Add smooth scrolling to timeline
-        document.addEventListener('DOMContentLoaded', function() {
-            const timelineContainer = document.querySelector('.timeline-container');
-            if (timelineContainer) {
-                timelineContainer.scrollTop = timelineContainer.scrollHeight;
-            }
-        });
     </script>
-} 
+}

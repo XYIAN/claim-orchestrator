@@ -4,10 +4,6 @@ namespace ClaimOrchestrator.Services
 {
 	public interface IEligibilityService
 	{
-		Task<EligibilityResult> CheckEligibilityAsync(Claim claim);
-		Task<EligibilityResult> CheckAmountEligibilityAsync(decimal amount);
-		Task<EligibilityResult> CheckGeographicEligibilityAsync(string address);
-		Task<EligibilityResult> CheckTimeEligibilityAsync(DateTime createdAt);
 	}
 	
 	public class EligibilityResult
@@ -37,4 +33,4 @@ namespace ClaimOrchestrator.Services
 			};
 		}
 	}
-} 
+}

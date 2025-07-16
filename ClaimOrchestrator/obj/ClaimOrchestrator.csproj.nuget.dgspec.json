@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/kyle/code/claim-orchestrator/ClaimOrchestrator/ClaimOrchestrator.csproj": {}
+    "C:\\Users\\Roy\\Desktop\\projectsAtHome\\claim-orchestrator\\ClaimOrchestrator\\ClaimOrchestrator.csproj": {}
   },
   "projects": {
-    "/Users/kyle/code/claim-orchestrator/ClaimOrchestrator/ClaimOrchestrator.csproj": {
+    "C:\\Users\\Roy\\Desktop\\projectsAtHome\\claim-orchestrator\\ClaimOrchestrator\\ClaimOrchestrator.csproj": {
       "version": "1.1.0",
       "restore": {
-        "projectUniqueName": "/Users/kyle/code/claim-orchestrator/ClaimOrchestrator/ClaimOrchestrator.csproj",
+        "projectUniqueName": "C:\\Users\\Roy\\Desktop\\projectsAtHome\\claim-orchestrator\\ClaimOrchestrator\\ClaimOrchestrator.csproj",
         "projectName": "ClaimOrchestrator",
-        "projectPath": "/Users/kyle/code/claim-orchestrator/ClaimOrchestrator/ClaimOrchestrator.csproj",
-        "packagesPath": "/Users/kyle/.nuget/packages/",
-        "outputPath": "/Users/kyle/code/claim-orchestrator/ClaimOrchestrator/obj/",
+        "projectPath": "C:\\Users\\Roy\\Desktop\\projectsAtHome\\claim-orchestrator\\ClaimOrchestrator\\ClaimOrchestrator.csproj",
+        "packagesPath": "C:\\Users\\Roy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Roy\\Desktop\\projectsAtHome\\claim-orchestrator\\ClaimOrchestrator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/kyle/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Roy\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -56,17 +61,25 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[9.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[9.0.7, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -96,7 +109,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/8.0.4/libexec/sdk/8.0.104/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
