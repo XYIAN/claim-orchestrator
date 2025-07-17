@@ -1,0 +1,13 @@
+/Users/kyle/code/claim-orchestrator/GenericDataAccess/obj/Debug/net8.0/GenericDataAccess.csproj.AssemblyReference.cache
+/Users/kyle/code/claim-orchestrator/GenericDataAccess/obj/Debug/net8.0/GenericDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+/Users/kyle/code/claim-orchestrator/GenericDataAccess/obj/Debug/net8.0/GenericDataAccess.AssemblyInfoInputs.cache
+/Users/kyle/code/claim-orchestrator/GenericDataAccess/obj/Debug/net8.0/GenericDataAccess.AssemblyInfo.cs
+/Users/kyle/code/claim-orchestrator/GenericDataAccess/obj/Debug/net8.0/GenericDataAccess.csproj.CoreCompileInputs.cache
+/Users/kyle/code/claim-orchestrator/GenericDataAccess/obj/Debug/net8.0/GenericDataAccess.sourcelink.json
+/Users/kyle/code/claim-orchestrator/GenericDataAccess/bin/Debug/net8.0/GenericDataAccess.deps.json
+/Users/kyle/code/claim-orchestrator/GenericDataAccess/bin/Debug/net8.0/GenericDataAccess.dll
+/Users/kyle/code/claim-orchestrator/GenericDataAccess/bin/Debug/net8.0/GenericDataAccess.pdb
+/Users/kyle/code/claim-orchestrator/GenericDataAccess/obj/Debug/net8.0/GenericDataAccess.dll
+/Users/kyle/code/claim-orchestrator/GenericDataAccess/obj/Debug/net8.0/refint/GenericDataAccess.dll
+/Users/kyle/code/claim-orchestrator/GenericDataAccess/obj/Debug/net8.0/GenericDataAccess.pdb
+/Users/kyle/code/claim-orchestrator/GenericDataAccess/obj/Debug/net8.0/ref/GenericDataAccess.dll
