@@ -219,3 +219,71 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ---
 
 **Claim Orchestrator** - Streamlining claims management for the modern world.
+
+## GenericDataAccess Library
+
+A reusable .NET 8 class library for generic data access using Dapper and Microsoft.Data.SqlClient. Supports MSSQL, async CRUD, filtering, and cursor-based pagination.
+
+### Features
+
+- Generic repository pattern for any entity implementing `IEntity`
+- Async methods for GetById, GetAll, Post, Filter, CursorPagination, Update, Delete, Count, Exists
+- Clean code, extensible, and safe (parameterized queries)
+- Sample console app included
+
+### Usage
+
+1. **Install dependencies:**
+
+   - Dapper
+   - Microsoft.Data.SqlClient
+
+2. **Implement your entity:**
+
+```csharp
+public class Person : IEntity
+{
+    public Guid Id { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public DateTime CreatedAt { get; set; }
+}
+```
+
+3. **Use the repository:**
+
+```csharp
+var connectionString = "Server=localhost;Database=SampleDb;User Id=sa;Password=your_password;TrustServerCertificate=True;";
+var repository = new GenericRepository<Person>(connectionString);
+
+// Insert
+var newPerson = new Person { Name = "Alice", Age = 30, CreatedAt = DateTime.UtcNow };
+var inserted = await repository.PostAsync(newPerson);
+
+// Get all
+var allPeople = await repository.GetAllAsync();
+
+// Filter
+var filtered = await repository.FilterAsync("Age > @MinAge", new { MinAge = 25 });
+
+// Cursor pagination
+var paged = await repository.CursorPaginationAsync(2);
+```
+
+### Sample App
+
+See `GenericDataAccess.SampleApp/Program.cs` for a runnable example.
+
+---
+
+## Project Structure
+
+- `GenericDataAccess/Interfaces/` — IEntity, IGenericRepository
+- `GenericDataAccess/Repositories/` — GenericRepository implementation
+- `GenericDataAccess.SampleApp/` — Console demo
+
+---
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md)

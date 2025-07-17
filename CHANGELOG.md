@@ -76,3 +76,13 @@
 - Razor Views with Bootstrap and FontAwesome icons
 - Warm neutral color theme for professional admin UI
 - User-focused README and basic sitemap.xml
+
+## [Unreleased]
+
+### Added
+
+- GenericDataAccess class library: Implements a generic repository pattern using Dapper and Microsoft.Data.SqlClient for MSSQL.
+  - Supports async CRUD, filter, and cursor-based pagination.
+  - Includes IEntity and IGenericRepository<T> interfaces.
+  - Clean code, separation of concerns, and extensible design.
+- GenericDataAccess.SampleApp: Console app demonstrating usage with a sample Person entity.
