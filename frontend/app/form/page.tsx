@@ -26,12 +26,7 @@ export default function FormPage() {
   return (
     <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#f8fafc", position: "relative" }}>
       <div style={{ position: "fixed", top: "1.5rem", right: "2rem", background: "#6366f1", color: "#fff", padding: "0.5rem 1.25rem", borderRadius: "2rem", fontWeight: 600, fontSize: "1.1rem", zIndex: 1000, boxShadow: "0 2px 8px rgba(99, 102, 241, 0.12)", display: "flex", alignItems: "center" }}>
-        <span style={{ display: "inline-flex", alignItems: "center", marginRight: 8, verticalAlign: "middle" }}>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="10" cy="7" r="4" fill="#fff" stroke="#6366f1" strokeWidth="1.5" />
-            <path d="M3 17c0-2.5 3.5-4 7-4s7 1.5 7 4" stroke="#6366f1" strokeWidth="1.5" fill="none" />
-          </svg>
-        </span>
+        <i className="bi bi-person-badge-fill" style={{ fontSize: 20, marginRight: 8, verticalAlign: "middle" }}></i>
         <span>{loggedInUser}</span>
         <button onClick={handleLogout} style={{ marginLeft: 12, background: "#fff", color: "#6366f1", border: "none", borderRadius: "1.5rem", padding: "0.3rem 1.1rem", fontSize: "1rem", fontWeight: 600, cursor: "pointer", transition: "background 0.2s, color 0.2s", boxShadow: "0 1px 4px rgba(99, 102, 241, 0.08)" }} title="Logout">Logout</button>
       </div>
