@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © 2025 Claim Orchestrator")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Streamlined claims management and processing system")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.0+1e28e4c6515c7cbbabdf6d6d80d9333cccfe8ac4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.0+dfe37ab85af0f3a00def8308ba1ecda40ce57048")]
 [assembly: System.Reflection.AssemblyProductAttribute("Claim Orchestrator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClaimOrchestrator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.1.0.0")]

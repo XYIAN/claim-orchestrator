@@ -10,6 +10,7 @@ namespace ClaimOrchestrator.Data
 		}
 		
 		public DbSet<Test> Tests { get; set; } // Only Test entity remains
+		public DbSet<User> Users { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{

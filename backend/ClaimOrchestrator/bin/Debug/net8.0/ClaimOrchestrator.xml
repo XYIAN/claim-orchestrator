@@ -95,5 +95,17 @@
         <member name="M:ClaimOrchestrator.Migrations.RemoveClaimsAndProcessingLogs_Final.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:ClaimOrchestrator.Migrations.AddUsersTable">
+            <inheritdoc />
+        </member>
+        <member name="M:ClaimOrchestrator.Migrations.AddUsersTable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ClaimOrchestrator.Migrations.AddUsersTable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ClaimOrchestrator.Migrations.AddUsersTable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>
